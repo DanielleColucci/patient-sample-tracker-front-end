@@ -19,4 +19,6 @@ export interface User {
   id: number;
   createdAt: string;
   updatedAt: string;
+  authorized: boolean;
+  admin: boolean;
 }
