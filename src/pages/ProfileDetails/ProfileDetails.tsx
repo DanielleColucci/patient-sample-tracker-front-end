@@ -1,11 +1,16 @@
 import { useParams } from "react-router"
 import { useState, useEffect } from 'react'
+import { Link } from "react-router-dom"
+
+// assets
+import defaultProfile from '../../assets/defaultProfile.jpeg'
 
 // services
 import * as profileService from '../../services/profileService'
 
 // types
 import { User, Profile } from "../../types/models"
+import SampleCard from "../../components/SampleCard/SampleCard"
 
 
 interface ProfileDetailsProps {
@@ -34,7 +39,35 @@ const ProfileDetails = (props: ProfileDetailsProps): JSX.Element => {
   }, [id])
   
   return (
-    <h1>Profile Details</h1>
+    <main>
+      <Link to='/profiles'>Go back</Link>
+      {profile ? 
+        <div>
+          <section>
+            <h1>{profile.name}</h1>
+            <img 
+              src={profile.photo ? profile.photo : defaultProfile} 
+              alt={`${profile.name}'s avatar`} 
+              style={{width: '120px'}}
+            />
+          </section>
+          <section>
+            <h2>Samples</h2>
+            {profile.samples.length ? 
+              <div>
+                {profile.samples.map(sample => (
+                  <SampleCard sample={sample}/>
+                ))}
+              </div>
+              :
+              <p>This user has not yet added any samples</p>
+            }
+          </section>
+        </div>
+        :
+        <h3>Loading...</h3>
+      }
+    </main>
   )
 }
 
