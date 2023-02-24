@@ -33,6 +33,9 @@ const Requests = (props: RequestsProps): JSX.Element => {
           <button onClick={() => props.handleUpdateAuthorization(p)}>
             unauthorize
           </button>
+          <button onClick={() => props.handleUpdateAdmin(p)}>
+            {p.User?.admin ? 'Remove Admin' : 'Grant Admin Status'}
+          </button>
         </>
       ))}
     </main>
