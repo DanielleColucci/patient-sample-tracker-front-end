@@ -18,18 +18,20 @@ import NewSample from './pages/NewSample/NewSample'
 // services
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
+import * as sampleService from './services/sampleService'
 
 // stylesheets
 import './App.css'
 
 // types
-import { User, Profile } from './types/models'
+import { User, Profile, Sample } from './types/models'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
   
   const [user, setUser] = useState<User | null>(authService.getUser())
   const [profiles, setProfiles] = useState<Profile[]>([])
+  const [samples, setSamples] = useState<Sample[]>([])
 
   useEffect((): void => {
     const fetchProfiles = async (): Promise<void> => {
@@ -41,6 +43,18 @@ function App(): JSX.Element {
       }
     }
     if (user) fetchProfiles()
+  }, [user])
+
+  useEffect((): void => {
+    const fetchAllSamples = async (): Promise<void> => {
+      try {
+        const sampleData: Sample[] = await sampleService.index()
+        setSamples(sampleData)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    if (user) fetchAllSamples()
   }, [user])
 
   const handleLogout = (): void => {
