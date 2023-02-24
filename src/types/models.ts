@@ -3,10 +3,14 @@
 export interface Sample {
   id: number; 
   MRN: number; 
+  sampleNumber: string;
   date: string;
   cellLine: string;
   PDXModel: string;
-  profileId: number | Profile;
+  profileId: number;
+  Profile?: Profile;
+  createdAt: string;
+  updatedAt: string;
 }
 
 /* ---------===== auth models =====--------- */
