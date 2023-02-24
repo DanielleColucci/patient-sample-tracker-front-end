@@ -1,5 +1,5 @@
 // npm modules 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // page components
@@ -16,17 +16,33 @@ import Requests from './pages/Requests/requests'
 
 // services
 import * as authService from './services/authService'
+import * as profileService from './services/profileService'
 
 // stylesheets
 import './App.css'
 
 // types
-import { User } from './types/models'
+import { User, Profile } from './types/models'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
   
   const [user, setUser] = useState<User | null>(authService.getUser())
+  const [profiles, setProfiles] = useState<Profile[]>([])
+
+  useEffect((): void => {
+    const fetchProfiles = async (): Promise<void> => {
+      try {
+        const profileData: Profile[] = await profileService.getAllProfiles()
+        setProfiles(profileData)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    if (user) fetchProfiles()
+  }, [user])
+
+  console.log(profiles);
 
   const handleLogout = (): void => {
     authService.logout()
