@@ -11,16 +11,21 @@ interface EditSampleProps {
 
 const EditSample = (props: EditSampleProps): JSX.Element => {
   const { state } = useLocation()
-  const [form, setForm] = useState(state)
+  const [form, setForm] = useState<SampleFormData>(state)
   
   const handleChange = (evt: React.FormEvent) => {
     setForm({...form, [evt.currentTarget.name]: evt.currentTarget.value})
   }
 
+  const handleSubmit = (evt: React.FormEvent) => {
+    evt.preventDefault()
+    props.handleUpdateSample(form)
+  }
+
   return (
     <main>
       <h1>Edit Sample</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="MRN-input">MRN:</label>
         <input
           required

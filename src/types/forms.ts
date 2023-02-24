@@ -1,11 +1,18 @@
+import { Profile } from "./models";
+
 /* ---------==== custom forms ====--------- */
 
 export interface SampleFormData {
   MRN: number | undefined; 
   date: string;
+  sampleNumber: string;
   cellLine: string;
   PDXModel: string;
   id?: number;
+  Profile?: Profile;
+  createdAt?: string;
+  updatedAt?: string;
+  profileId?: number;
 }
 
 /* ---------===== auth forms =====--------- */

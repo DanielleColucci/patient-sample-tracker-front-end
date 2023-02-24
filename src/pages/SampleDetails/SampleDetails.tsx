@@ -16,8 +16,7 @@ const SampleDetails = (props: SampleDetailsProps): JSX.Element => {
   const { id } = useParams()
   const [sample, setSample] = useState<Sample | null>(null)
   const { user } = props
-  console.log(user);
-  console.log(sample)
+
   useEffect((): void => {
     const fetchSample = async (): Promise<void> => {
       try {
