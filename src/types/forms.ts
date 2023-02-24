@@ -5,6 +5,7 @@ export interface SampleFormData {
   date: string;
   cellLine: string;
   PDXModel: string;
+  id?: number;
 }
 
 /* ---------===== auth forms =====--------- */

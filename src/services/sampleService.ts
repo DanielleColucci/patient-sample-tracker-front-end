@@ -23,6 +23,23 @@ const create = async(sampleData: SampleFormData): Promise<Sample> => {
   }
 }
 
+const update = async(sampleData: SampleFormData): Promise<Sample> => {
+  try {
+    const res = await fetch(`${BASE_URL}/${sampleData.id}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(sampleData)
+    })
+    return await res.json() as Sample
+  } catch (error) {
+    throw error
+  }
+}
+
 export {
   create,
+  update,
 }
