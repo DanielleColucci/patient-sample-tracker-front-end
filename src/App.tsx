@@ -29,6 +29,8 @@ function App(): JSX.Element {
   
   const [user, setUser] = useState<User | null>(authService.getUser())
   const [profiles, setProfiles] = useState<Profile[]>([])
+  const [unauthorizedProfs, setUnauthorizedProfs] = useState<Profile[]>([])
+  const [authorizedProfs, setAuthorizedProfs] = useState<Profile[]>([])
 
   useEffect((): void => {
     const fetchProfiles = async (): Promise<void> => {
@@ -42,7 +44,19 @@ function App(): JSX.Element {
     if (user) fetchProfiles()
   }, [user])
 
-  console.log(profiles);
+  useEffect((): void => {
+    const unauthProfData = profiles.filter((p: Profile) => {
+      return p.User?.authorized === false
+    })
+    setUnauthorizedProfs(unauthProfData)
+  }, [profiles])
+
+  useEffect((): void => {
+    const authProfData = profiles.filter((p: Profile) => {
+      return p.User?.authorized === true
+    })
+    setAuthorizedProfs(authProfData)
+  }, [profiles])
 
   const handleLogout = (): void => {
     authService.logout()
@@ -87,7 +101,10 @@ function App(): JSX.Element {
           path="/requests"
           element={
             <ProtectedRoute user={user}>
-              <Requests />
+              <Requests 
+                unauthorizedProfs={unauthorizedProfs}
+                authorizedProfs={authorizedProfs}
+              />
             </ProtectedRoute>
           }
         />

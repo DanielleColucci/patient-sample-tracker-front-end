@@ -19,7 +19,7 @@ export interface Profile {
   createdAt: string;
   updatedAt: string;
   userId: number;
-  user?: User;
+  User?: User;
 }
 
 export interface User {

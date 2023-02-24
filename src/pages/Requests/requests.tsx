@@ -1,10 +1,22 @@
-const Requests = () => {
+import { Profile } from "../../types/models"
+
+interface RequestsProps {
+  unauthorizedProfs: Profile[];
+  authorizedProfs: Profile[];
+}
+
+const Requests = (props: RequestsProps): JSX.Element => {
+  const { unauthorizedProfs, authorizedProfs } = props
   return (
     <main>
       <h1>Requests</h1>
-      <p>Map through authorization requests here</p>
+      {unauthorizedProfs.map((p: Profile) => (
+        <p>{p.name} is unauthorized</p>
+      ))}
       <h1>Lab Members</h1>
-      <p>Map through authorized users here</p>
+      {authorizedProfs.map((p: Profile) => (
+        <p>{p.name} is authorized</p>
+      ))}
     </main>
   )
 }
