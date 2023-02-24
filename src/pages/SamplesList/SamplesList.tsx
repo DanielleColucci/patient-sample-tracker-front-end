@@ -11,7 +11,10 @@ interface SamplesListProps {
 const SamplesList = (props: SamplesListProps): JSX.Element => {
   return (
     <main>
-      <h1>This is a sample list</h1>
+      <h1>Samples</h1>
+      {props.samples.map(s => (
+        <SampleCard key={s.id} sample={s}/>
+      ))}
     </main>
   )
 }
