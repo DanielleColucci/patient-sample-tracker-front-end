@@ -1,6 +1,9 @@
 // types 
 import { Sample } from '../../types/models';
 
+// components
+import SampleCard from '../../components/SampleCard/SampleCard';
+
 interface SamplesListProps {
   samples: Sample[];
 }
