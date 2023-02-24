@@ -29,8 +29,6 @@ function App(): JSX.Element {
   
   const [user, setUser] = useState<User | null>(authService.getUser())
   const [profiles, setProfiles] = useState<Profile[]>([])
-  const [unauthorizedProfs, setUnauthorizedProfs] = useState<Profile[]>([])
-  const [authorizedProfs, setAuthorizedProfs] = useState<Profile[]>([])
 
   useEffect((): void => {
     const fetchProfiles = async (): Promise<void> => {
@@ -44,20 +42,6 @@ function App(): JSX.Element {
     if (user) fetchProfiles()
   }, [user])
 
-  useEffect((): void => {
-    const unauthProfData = profiles.filter((p: Profile) => {
-      return p.User?.authorized === false
-    })
-    setUnauthorizedProfs(unauthProfData)
-  }, [profiles])
-
-  useEffect((): void => {
-    const authProfData = profiles.filter((p: Profile) => {
-      return p.User?.authorized === true
-    })
-    setAuthorizedProfs(authProfData)
-  }, [profiles])
-
   const handleLogout = (): void => {
     authService.logout()
     setUser(null)
@@ -70,7 +54,7 @@ function App(): JSX.Element {
 
   const handleUpdateAuthorization = async (profile: Profile): Promise<void> => {
     const updatedProfile = await profileService.updateAuthorization(profile)
-    setProfiles(profiles.filter(p => p.id !== updatedProfile.id))
+    setProfiles(profiles.map(p => p.id === profile.id ? updatedProfile : p))
   }
 
   return (
@@ -107,8 +91,9 @@ function App(): JSX.Element {
           element={
             <ProtectedRoute user={user}>
               <Requests 
-                unauthorizedProfs={unauthorizedProfs}
-                authorizedProfs={authorizedProfs}
+                // unauthorizedProfs={unauthorizedProfs}
+                // authorizedProfs={authorizedProfs}
+                profiles={profiles}
                 handleUpdateAuthorization={handleUpdateAuthorization}
               />
             </ProtectedRoute>

@@ -1,13 +1,18 @@
 import { Profile } from "../../types/models"
 
 interface RequestsProps {
-  unauthorizedProfs: Profile[];
-  authorizedProfs: Profile[];
+  profiles: Profile[];
   handleUpdateAuthorization: (profile: Profile) => void;
 }
 
 const Requests = (props: RequestsProps): JSX.Element => {
-  const { unauthorizedProfs, authorizedProfs } = props
+  const { profiles } = props
+  const unauthorizedProfs = profiles.filter((p: Profile) => {
+    return !p.User?.authorized
+  })
+  const authorizedProfs = profiles.filter((p: Profile) => {
+    return p.User?.authorized
+  })
 
   return (
     <main>
