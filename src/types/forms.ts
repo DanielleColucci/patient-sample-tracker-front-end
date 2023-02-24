@@ -1,7 +1,7 @@
 /* ---------==== custom forms ====--------- */
 
 export interface SampleFormData {
-  MRN: number; 
+  MRN: number | undefined; 
   date: string;
   cellLine: string;
   PDXModel: string;

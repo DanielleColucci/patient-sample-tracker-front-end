@@ -7,7 +7,7 @@ interface NewSampleProps {
 
 const NewSample = (props: NewSampleProps): JSX.Element => {
   const [form, setForm] = useState({
-    MRN: '',
+    MRN: undefined,
     sampleNumber: '',
     date: '',
     cellLine: 'NA',
@@ -18,18 +18,24 @@ const NewSample = (props: NewSampleProps): JSX.Element => {
     setForm({...form, [evt.currentTarget.name]: evt.currentTarget.value})
   }
 
+  const handleSubmit = (evt: React.FormEvent) => {
+    evt.preventDefault()
+    props.handleAddSample(form)
+  }
+
   return (
     <main>
       <h1>New Sample</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="MRN-input">MRN:</label>
         <input
           required
-          type="text" 
+          type="number" 
           name="MRN"
           id="MRN-input"
           value={form.MRN}
           placeholder="MRN number"
+          autoComplete="off"
           onChange={handleChange}
         />
         <label htmlFor="sample-number-input">Sample Number:</label>
@@ -40,6 +46,7 @@ const NewSample = (props: NewSampleProps): JSX.Element => {
           id="sample-number-input"
           value={form.sampleNumber}
           placeholder="Sample number"
+          autoComplete="off"
           onChange={handleChange}
         />
         <label htmlFor="date-input">Date:</label>
@@ -50,6 +57,7 @@ const NewSample = (props: NewSampleProps): JSX.Element => {
           id="date-input"
           value={form.date}
           placeholder="YYYY-MM-DD"
+          autoComplete="off"
           onChange={handleChange}
         />
         <label htmlFor="cell-line-select">Cell Line Status:</label>
