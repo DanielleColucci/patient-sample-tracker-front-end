@@ -15,6 +15,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import Requests from './pages/Requests/requests'
 import NewSample from './pages/NewSample/NewSample'
 import SamplesList from './pages/SamplesList/SamplesList'
+import SampleDetails from './pages/SampleDetails/SampleDetails'
 
 // services
 import * as authService from './services/authService'
@@ -140,6 +141,14 @@ function App(): JSX.Element {
           element={
             <ProtectedRoute user={user}>
               <NewSample handleAddSample={handleAddSample} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/samples/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <SampleDetails />
             </ProtectedRoute>
           }
         />
