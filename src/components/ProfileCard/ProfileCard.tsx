@@ -4,14 +4,17 @@ import { Link } from 'react-router-dom'
 import defaultProfile from '../../assets/defaultProfile.jpeg'
 
 // types
-import { Profile } from "../../types/models"
+import { Profile, User } from "../../types/models"
 
 interface ProfileCardProps {
-  profile: Profile
+  profile: Profile;
+  user: User | null;
+  handleUpdateAuthorization: (profile: Profile) => void;
+  handleUpdateAdmin: (profile: Profile) => void;
 }
 
 const ProfileCard = (props: ProfileCardProps): JSX.Element => {
-  const { profile } = props  
+  const { profile, user } = props  
   
   return (
     <div>
@@ -21,10 +24,22 @@ const ProfileCard = (props: ProfileCardProps): JSX.Element => {
           <p>Admin</p>
         }
       </div>
-      <img 
-        src={profile.photo ? profile.photo : defaultProfile} 
-        alt={`${profile.name}'s avatar`} 
-        style={{width: '80px'}}/>
+      <div>
+        <img 
+          src={profile.photo ? profile.photo : defaultProfile} 
+          alt={`${profile.name}'s avatar`} 
+          style={{width: '80px'}}/>
+        {user?.admin && 
+          <div>
+            <button onClick={() => props.handleUpdateAuthorization(profile)}>
+                unauthorize
+              </button>
+              <button onClick={() => props.handleUpdateAdmin(profile)}>
+                {profile.User?.admin ? 'Remove Admin' : 'Grant Admin Status'}
+              </button>
+          </div>
+        }
+      </div>
     </div>
   )
 }

@@ -2,10 +2,13 @@
 import ProfileCard from '../../components/ProfileCard/ProfileCard';
 
 // types
-import { Profile } from '../../types/models'
+import { Profile, User } from '../../types/models'
 
 interface ProfilesProps {
   profiles: Profile[];
+  user: User | null;
+  handleUpdateAuthorization: (profile: Profile) => void;
+  handleUpdateAdmin: (profile: Profile) => void;
 }
 
 const Profiles = (props: ProfilesProps): JSX.Element => {
@@ -19,7 +22,13 @@ const Profiles = (props: ProfilesProps): JSX.Element => {
     <>
       <h1>Lab Members</h1>
       {authorizedProfs.map((profile: Profile) =>
-        <ProfileCard key={profile.id} profile={profile}/>
+        <ProfileCard 
+          key={profile.id} 
+          profile={profile} 
+          user={props.user}
+          handleUpdateAuthorization={props.handleUpdateAuthorization}
+          handleUpdateAdmin={props.handleUpdateAdmin}
+        />
       )}
     </>
   )

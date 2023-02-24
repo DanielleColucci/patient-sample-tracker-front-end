@@ -116,7 +116,12 @@ function App(): JSX.Element {
           path="/profiles"
           element={
             <ProtectedRoute user={user}>
-              <Profiles profiles={profiles}/>
+              <Profiles 
+                profiles={profiles} 
+                user={user}
+                handleUpdateAuthorization={handleUpdateAuthorization}
+                handleUpdateAdmin={handleUpdateAdmin}
+              />
             </ProtectedRoute>
           }
         />
