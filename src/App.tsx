@@ -87,6 +87,12 @@ function App(): JSX.Element {
     navigate('/samples')
   }
 
+  const handleUpdateSample = async (sampleData: SampleFormData): Promise<void> => {
+    const updatedSample = await sampleService.update(sampleData)
+    setSamples(samples.map(s => sampleData.id === s.id ? updatedSample : s))
+    navigate(`/samples/${sampleData.id}`)
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -149,7 +155,7 @@ function App(): JSX.Element {
           path="/samples/:id/edit"
           element={
             <ProtectedRoute user={user}>
-              <EditSample />
+              <EditSample handleUpdateSample={handleUpdateSample} />
             </ProtectedRoute>
           }
         />

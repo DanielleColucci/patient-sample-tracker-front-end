@@ -3,8 +3,13 @@ import { useLocation } from 'react-router'
 
 // types 
 import { Sample } from "../../types/models"
+import { SampleFormData } from '../../types/forms'
 
-const EditSample = (): JSX.Element => {
+interface EditSampleProps {
+  handleUpdateSample: (sampleData: SampleFormData) => void;
+}
+
+const EditSample = (props: EditSampleProps): JSX.Element => {
   const { state } = useLocation()
   const [form, setForm] = useState(state)
   
