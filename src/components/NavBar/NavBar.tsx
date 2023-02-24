@@ -1,5 +1,11 @@
+// assets
+import testTube from '../../assets/test-tube.png'
+
+// styles
+import styles from './NavBar.module.css'
+
 // npm modules
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 // types
 import { User } from '../../types/models'
@@ -13,15 +19,21 @@ const NavBar = (props: NavBarProps): JSX.Element => {
   const { user, handleLogout } = props
   
   return (
-    <nav>
+    <nav className={styles.nav}>
       {user ?
         <>
-          <NavLink to="/samples">Samples</NavLink>
-          <NavLink to="/samples/new">Add Sample</NavLink>
-          <NavLink to="/profiles">Profiles</NavLink>
-          {user.admin && <NavLink to="/requests">Requests</NavLink>}
-          <NavLink to="/change-password">Change Password</NavLink>
-          <NavLink to="" onClick={handleLogout}>Sign Out</NavLink>
+          <div className={styles.navLeft}>
+            <Link to='/'>
+              <img className={styles.icon} src={testTube} alt="test tube icon" />
+            </Link>
+            <NavLink to="/samples">Samples</NavLink>
+            <NavLink to="/samples/new">Add Sample</NavLink>
+            <NavLink to="/profiles">Profiles</NavLink>
+          </div>
+          <div className={styles.navRight}>
+            {user.admin && <NavLink to="/requests">Requests</NavLink>}
+            <NavLink to="" onClick={handleLogout}>Sign Out</NavLink>
+          </div>
         </>
       :
         <>
