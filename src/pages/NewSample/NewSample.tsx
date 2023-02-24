@@ -1,6 +1,11 @@
 import { useState } from "react"
+import { SampleFormData } from "../../types/forms"
 
-const NewSample = (): JSX.Element => {
+interface NewSampleProps {
+  handleAddSample: (sampleData: SampleFormData) => void;
+}
+
+const NewSample = (props: NewSampleProps): JSX.Element => {
   const [form, setForm] = useState({
     MRN: '',
     sampleNumber: '',

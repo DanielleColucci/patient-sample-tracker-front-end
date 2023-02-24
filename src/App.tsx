@@ -25,6 +25,7 @@ import './App.css'
 
 // types
 import { User, Profile, Sample } from './types/models'
+import { SampleFormData } from './types/forms'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
@@ -77,6 +78,12 @@ function App(): JSX.Element {
     setProfiles(profiles.map(p => p.id === profile.id ? updatedProfile : p))
   }
 
+  const handleAddSample = async (sampleData: SampleFormData): Promise<void> => {
+    const newSample = await sampleService.create(sampleData)
+    setSamples([newSample, ...samples])
+    navigate('/samples')
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -119,10 +126,10 @@ function App(): JSX.Element {
           }
         />
         <Route
-          path="/samples"
+          path="/samples/new"
           element={
             <ProtectedRoute user={user}>
-              <NewSample />
+              <NewSample handleAddSample={handleAddSample} />
             </ProtectedRoute>
           }
         />
