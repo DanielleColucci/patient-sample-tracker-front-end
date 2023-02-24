@@ -66,10 +66,12 @@ const SampleDetails = (props: SampleDetailsProps): JSX.Element => {
               <Link to={`/samples/${id}/edit`} state={sample}>
                 Edit
               </Link>
-              <div>
+              <button 
+                onClick={() => props.handleDeleteSample(sample.id)}
+              >
                 Delete
-              </div>
-            </div>
+              </button>
+            </div> 
           }
         </section>
         :
