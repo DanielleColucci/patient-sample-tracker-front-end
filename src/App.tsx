@@ -119,6 +119,7 @@ function App(): JSX.Element {
             <ProtectedRoute user={user}>
               <Requests 
                 profiles={profiles}
+                user={user}
                 handleUpdateAuthorization={handleUpdateAuthorization}
                 handleUpdateAdmin={handleUpdateAdmin}
               />
