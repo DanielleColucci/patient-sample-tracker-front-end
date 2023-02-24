@@ -61,9 +61,22 @@ const show = async (id: number): Promise<Sample> => {
   }
 }
 
+const deleteSample = async (id: number): Promise<Sample> => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: 'DELETE', 
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}`}
+    })
+    return await res.json() as Sample
+  } catch (error) {
+    throw error
+  }
+}
+
 export {
   create,
   update,
   index,
   show,
+  deleteSample as delete,
 }
