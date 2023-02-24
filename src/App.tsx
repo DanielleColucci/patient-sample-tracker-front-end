@@ -12,6 +12,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 // components
 import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
+import Requests from './pages/Requests/requests'
 
 // services
 import * as authService from './services/authService'
@@ -63,6 +64,14 @@ function App(): JSX.Element {
           element={
             <ProtectedRoute user={user}>
               <ChangePassword handleAuthEvt={handleAuthEvt} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/requests"
+          element={
+            <ProtectedRoute user={user}>
+              <Requests />
             </ProtectedRoute>
           }
         />
