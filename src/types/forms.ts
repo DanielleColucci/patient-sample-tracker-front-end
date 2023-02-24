@@ -1,6 +1,11 @@
 /* ---------==== custom forms ====--------- */
 
-
+export interface SampleFormData {
+  MRN: number; 
+  date: string;
+  cellLine: string;
+  PDXModel: string;
+}
 
 /* ---------===== auth forms =====--------- */
 
