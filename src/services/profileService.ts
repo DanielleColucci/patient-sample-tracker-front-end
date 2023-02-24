@@ -35,4 +35,18 @@ async function addPhoto(
   }
 }
 
-export { getAllProfiles, addPhoto }
+async function updateAuthorization(profile: Profile): Promise<Profile> {
+  try {
+    const res = await fetch(`${BASE_URL}/${profile.userId}/authorize`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      }
+    })
+    return await res.json() as Profile
+  } catch (error) {
+    throw error
+  }
+}
+
+export { getAllProfiles, addPhoto, updateAuthorization }
