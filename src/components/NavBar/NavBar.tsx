@@ -17,7 +17,7 @@ const NavBar = (props: NavBarProps): JSX.Element => {
       {user ?
         <>
           <NavLink to="/samples">Samples</NavLink>
-          <NavLink to="/samples">Add Sample</NavLink>
+          <NavLink to="/samples/new">Add Sample</NavLink>
           <NavLink to="/profiles">Profiles</NavLink>
           {user.admin && <NavLink to="/requests">Requests</NavLink>}
           <NavLink to="/change-password">Change Password</NavLink>
