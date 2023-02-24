@@ -13,6 +13,7 @@ import NewSample from './pages/NewSample/NewSample'
 import SamplesList from './pages/SamplesList/SamplesList'
 import SampleDetails from './pages/SampleDetails/SampleDetails'
 import EditSample from './pages/EditSample/EditSample'
+import ProfileDetails from './pages/ProfileDetails/ProfileDetails'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -122,6 +123,14 @@ function App(): JSX.Element {
                 handleUpdateAuthorization={handleUpdateAuthorization}
                 handleUpdateAdmin={handleUpdateAdmin}
               />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profiles/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <ProfileDetails />
             </ProtectedRoute>
           }
         />
