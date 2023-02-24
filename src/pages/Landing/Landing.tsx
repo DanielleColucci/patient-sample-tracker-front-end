@@ -17,7 +17,7 @@ const Landing = (props: LandingProps): JSX.Element => {
       {!user && 
         <>
           <h2>Please log in to continue.</h2>
-          <h3>Don't have an account? <a href="/signup">Sign up</a> to continue.
+          <h3>Don't have an account? <a href="/signup">Sign up</a> to request access.
           </h3>
         </>
       }
