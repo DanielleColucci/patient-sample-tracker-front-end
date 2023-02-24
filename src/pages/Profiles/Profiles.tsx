@@ -1,3 +1,6 @@
+// components
+import ProfileCard from '../../components/ProfileCard/ProfileCard';
+
 // types
 import { Profile } from '../../types/models'
 
@@ -16,7 +19,7 @@ const Profiles = (props: ProfilesProps): JSX.Element => {
     <>
       <h1>Lab Members</h1>
       {authorizedProfs.map((profile: Profile) =>
-        <p key={profile.id}>{profile.name}</p>
+        <ProfileCard key={profile.id} profile={profile}/>
       )}
     </>
   )
