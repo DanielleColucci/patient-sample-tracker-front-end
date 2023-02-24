@@ -3,6 +3,7 @@ import { Profile } from "../../types/models"
 interface RequestsProps {
   profiles: Profile[];
   handleUpdateAuthorization: (profile: Profile) => void;
+  handleUpdateAdmin: (profile: Profile) => void;
 }
 
 const Requests = (props: RequestsProps): JSX.Element => {

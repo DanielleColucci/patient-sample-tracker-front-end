@@ -51,7 +51,7 @@ async function updateAuthorization(profile: Profile): Promise<Profile> {
 
 async function updateAdmin(profile: Profile): Promise<Profile> {
   try {
-    const res = await fetch(`${BASE_URL}/${profile.userId}/authorize`, {
+    const res = await fetch(`${BASE_URL}/${profile.userId}/admin`, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`

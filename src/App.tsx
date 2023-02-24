@@ -56,6 +56,11 @@ function App(): JSX.Element {
     const updatedProfile = await profileService.updateAuthorization(profile)
     setProfiles(profiles.map(p => p.id === profile.id ? updatedProfile : p))
   }
+  
+  const handleUpdateAdmin = async (profile: Profile): Promise<void> => {
+    const updatedProfile = await profileService.updateAdmin(profile)
+    setProfiles(profiles.map(p => p.id === profile.id ? updatedProfile : p))
+  }
 
   return (
     <>
@@ -91,10 +96,9 @@ function App(): JSX.Element {
           element={
             <ProtectedRoute user={user}>
               <Requests 
-                // unauthorizedProfs={unauthorizedProfs}
-                // authorizedProfs={authorizedProfs}
                 profiles={profiles}
                 handleUpdateAuthorization={handleUpdateAuthorization}
+                handleUpdateAdmin={handleUpdateAdmin}
               />
             </ProtectedRoute>
           }
