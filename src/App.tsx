@@ -21,6 +21,7 @@ import SampleDetails from './pages/SampleDetails/SampleDetails'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import * as sampleService from './services/sampleService'
+import EditSample from './pages/EditSample/EditSample'
 
 // stylesheets
 import './App.css'
@@ -141,6 +142,14 @@ function App(): JSX.Element {
           element={
             <ProtectedRoute user={user}>
               <NewSample handleAddSample={handleAddSample} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/samples/:id/edit"
+          element={
+            <ProtectedRoute user={user}>
+              <EditSample />
             </ProtectedRoute>
           }
         />

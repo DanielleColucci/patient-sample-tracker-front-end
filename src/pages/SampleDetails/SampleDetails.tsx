@@ -63,7 +63,7 @@ const SampleDetails = (props: SampleDetailsProps): JSX.Element => {
           </div>
           {(user?.admin || sample.Profile?.userId === user?.id) && 
             <div>
-              <Link to={`/samples/${id}/edit`}>
+              <Link to={`/samples/${id}/edit`} state={sample}>
                 Edit
               </Link>
               <div>

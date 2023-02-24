@@ -1,11 +1,8 @@
 // types 
 import { Sample } from "../../types/models"
 
-interface EditSampleProps {
-  sample: Sample;
-}
+const EditSample = (): JSX.Element => {
 
-const EditSample = (props: EditSampleProps): JSX.Element => {
   return (
     <main>
       <h1>New Sample</h1>
