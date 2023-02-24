@@ -56,7 +56,7 @@ const ProfileDetails = (props: ProfileDetailsProps): JSX.Element => {
             {profile.samples.length ? 
               <div>
                 {profile.samples.map(sample => (
-                  <SampleCard sample={sample}/>
+                  <SampleCard key={sample.id} sample={sample}/>
                 ))}
               </div>
               :
