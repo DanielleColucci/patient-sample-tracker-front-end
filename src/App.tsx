@@ -93,6 +93,12 @@ function App(): JSX.Element {
     navigate(`/samples/${sampleData.id}`)
   }
 
+  const handleDeleteSample = async (id: number): Promise<void> => {
+    const deletedSample = await sampleService.delete(id)
+    setSamples(samples.filter(s => s.id !== deletedSample.id))
+    navigate('/samples')
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -163,7 +169,10 @@ function App(): JSX.Element {
           path="/samples/:id"
           element={
             <ProtectedRoute user={user}>
-              <SampleDetails user={user}/>
+              <SampleDetails 
+                user={user} 
+                handleDeleteSample={handleDeleteSample}
+            />
             </ProtectedRoute>
           }
         />

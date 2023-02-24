@@ -10,6 +10,7 @@ import { Sample, User } from "../../types/models"
 
 interface SampleDetailsProps {
   user: User | null;
+  handleDeleteSample: (id: number) => void;
 }
 
 const SampleDetails = (props: SampleDetailsProps): JSX.Element => {
