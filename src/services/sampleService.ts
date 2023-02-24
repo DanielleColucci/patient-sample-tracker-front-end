@@ -50,8 +50,20 @@ const update = async(sampleData: SampleFormData): Promise<Sample> => {
   }
 }
 
+const show = async (id: number): Promise<Sample> => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}`}
+    })
+    return await res.json() as Sample
+  } catch (error) {
+    throw error
+  }
+}
+
 export {
   create,
   update,
   index,
+  show,
 }
