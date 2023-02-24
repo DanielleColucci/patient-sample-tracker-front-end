@@ -37,8 +37,15 @@ const NavBar = (props: NavBarProps): JSX.Element => {
         </>
       :
         <>
-          <NavLink to="/login">Log In</NavLink>
-          <NavLink to="/signup">Sign Up</NavLink>
+          <div className={styles.navLeft}>
+          <Link to='/'>
+              <img className={styles.icon} src={testTube} alt="test tube icon" />
+            </Link>
+          </div>
+          <div className={styles.navRight}>
+            <NavLink to="/login">Log In</NavLink>
+            <NavLink to="/signup">Sign Up</NavLink>
+          </div>
         </>
       }
     </nav>
