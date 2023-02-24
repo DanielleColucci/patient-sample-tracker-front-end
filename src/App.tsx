@@ -109,6 +109,7 @@ function App(): JSX.Element {
               <Requests 
                 unauthorizedProfs={unauthorizedProfs}
                 authorizedProfs={authorizedProfs}
+                handleUpdateAuthorization={handleUpdateAuthorization}
               />
             </ProtectedRoute>
           }
