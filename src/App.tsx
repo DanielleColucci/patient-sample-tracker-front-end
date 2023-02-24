@@ -68,6 +68,11 @@ function App(): JSX.Element {
     setUser(authService.getUser())
   }
 
+  const handleUpdateAuthorization = async (profile: Profile): Promise<void> => {
+    const updatedProfile = await profileService.updateAuthorization(profile)
+    setProfiles(profiles.filter(p => p.id !== updatedProfile.id))
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
