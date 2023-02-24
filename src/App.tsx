@@ -14,6 +14,7 @@ import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import Requests from './pages/Requests/requests'
 import NewSample from './pages/NewSample/NewSample'
+import SamplesList from './pages/SamplesList/SamplesList'
 
 // services
 import * as authService from './services/authService'
@@ -123,6 +124,14 @@ function App(): JSX.Element {
                 handleUpdateAuthorization={handleUpdateAuthorization}
                 handleUpdateAdmin={handleUpdateAdmin}
               />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/samples"
+          element={
+            <ProtectedRoute user={user}>
+              <SamplesList samples={samples} />
             </ProtectedRoute>
           }
         />
