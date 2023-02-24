@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
 // services
 import * as sampleService from '../../services/sampleService'
@@ -28,7 +29,39 @@ const SampleDetails = (): JSX.Element => {
   }, [id])
 
   return (
-    <h1>sample details page!</h1>
+    <main>
+      {sample ? 
+        <section> 
+          <h1>{sample.sampleNumber}</h1>
+          <div>
+            <div>
+              <div>Owner:</div>
+              <div>{sample.Profile?.name}</div>
+            </div>
+            <div>
+              <div>MRN:</div>
+              <div>{sample.MRN}</div>
+            </div>
+            <div>
+              <div>Date:</div>
+              <div>{sample.date}</div>
+            </div>
+            <div>
+              <div>Cell Line Status:</div>
+              <div>{sample.cellLine}</div>
+            </div>
+            <div>
+              <div>PDX Model Status:</div>
+              <div>{sample.PDXModel}</div>
+            </div>
+          </div>
+          {}
+        </section>
+        :
+        <h3>Loading...</h3>
+      }
+      <Link to='/samples'>Go Back</Link>
+    </main>
   )
 }
 
