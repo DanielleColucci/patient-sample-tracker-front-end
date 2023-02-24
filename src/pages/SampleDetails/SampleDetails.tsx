@@ -9,7 +9,7 @@ import * as sampleService from '../../services/sampleService'
 import { Sample, User } from "../../types/models"
 
 interface SampleDetailsProps {
-  user: User;
+  user: User | null;
 }
 
 const SampleDetails = (props: SampleDetailsProps): JSX.Element => {
@@ -61,7 +61,7 @@ const SampleDetails = (props: SampleDetailsProps): JSX.Element => {
               <div>{sample.PDXModel}</div>
             </div>
           </div>
-          {(user.admin || sample.Profile?.userId === user.id) && 
+          {(user?.admin || sample.Profile?.userId === user?.id) && 
             <div>
               <Link to={`/samples/${id}/edit`}>
                 Edit
