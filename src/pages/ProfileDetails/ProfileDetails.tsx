@@ -21,8 +21,8 @@ const ProfileDetails = (props: ProfileDetailsProps): JSX.Element => {
     const fetchProfile = async (): Promise<void> => {
       try {
         if (id) {
-          // const profileData = await profileService.show(parseInt(id))
-          // setProfile(profileData)
+          const profileData = await profileService.show(parseInt(id))
+          setProfile(profileData)
         } else {
           return
         }
@@ -32,6 +32,7 @@ const ProfileDetails = (props: ProfileDetailsProps): JSX.Element => {
     }
     fetchProfile()
   }, [id])
+  
   return (
     <h1>Profile Details</h1>
   )
