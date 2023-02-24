@@ -6,12 +6,18 @@ import { Link } from 'react-router-dom';
 import * as sampleService from '../../services/sampleService'
 
 // types 
-import { Sample } from "../../types/models"
+import { Sample, User } from "../../types/models"
 
-const SampleDetails = (): JSX.Element => {
+interface SampleDetailsProps {
+  user: User;
+}
+
+const SampleDetails = (props: SampleDetailsProps): JSX.Element => {
   const { id } = useParams()
   const [sample, setSample] = useState<Sample | null>(null)
-
+  const { user } = props
+  console.log(user);
+  console.log(sample)
   useEffect((): void => {
     const fetchSample = async (): Promise<void> => {
       try {
@@ -55,7 +61,16 @@ const SampleDetails = (): JSX.Element => {
               <div>{sample.PDXModel}</div>
             </div>
           </div>
-          {}
+          {(user.admin || sample.Profile?.userId === user.id) && 
+            <div>
+              <Link to={`/samples/${id}/edit`}>
+                Edit
+              </Link>
+              <div>
+                Delete
+              </div>
+            </div>
+          }
         </section>
         :
         <h3>Loading...</h3>

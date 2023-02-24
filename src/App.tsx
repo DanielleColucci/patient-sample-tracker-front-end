@@ -148,7 +148,7 @@ function App(): JSX.Element {
           path="/samples/:id"
           element={
             <ProtectedRoute user={user}>
-              <SampleDetails />
+              <SampleDetails user={user}/>
             </ProtectedRoute>
           }
         />
