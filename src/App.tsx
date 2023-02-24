@@ -6,22 +6,22 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
+import Profiles from './pages/ProfilesList/ProfilesList'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
-
-// components
-import NavBar from './components/NavBar/NavBar'
-import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import Requests from './pages/Requests/requests'
 import NewSample from './pages/NewSample/NewSample'
 import SamplesList from './pages/SamplesList/SamplesList'
 import SampleDetails from './pages/SampleDetails/SampleDetails'
+import EditSample from './pages/EditSample/EditSample'
+
+// components
+import NavBar from './components/NavBar/NavBar'
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import * as sampleService from './services/sampleService'
-import EditSample from './pages/EditSample/EditSample'
 
 // stylesheets
 import './App.css'
