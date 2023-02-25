@@ -28,7 +28,7 @@ const NavBar = (props: NavBarProps): JSX.Element => {
             </Link>
             <NavLink to="/samples">Samples</NavLink>
             <NavLink to="/samples/new">Add Sample</NavLink>
-            <NavLink to="/profiles">Profiles</NavLink>
+            <NavLink to="/profiles">Lab Members</NavLink>
           </div>
           <div className={styles.navRight}>
             {user.admin && <NavLink to="/requests">Requests</NavLink>}
