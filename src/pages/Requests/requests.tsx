@@ -27,14 +27,13 @@ const Requests = (props: RequestsProps): JSX.Element => {
         {unauthorizedProfs.length ?
           <div>
           {unauthorizedProfs.map((p: Profile) => (
-            <>
-              <p>{p.name} is unauthorized</p>
-              {user?.admin && 
-                <button onClick={() => props.handleUpdateAuthorization(p)}>
-                  authorize
-                </button>
-              }
-            </>
+            <RequestCard 
+              key={p.id}
+              profile={p}
+              handleUpdateAuthorization={props.handleUpdateAuthorization}
+              handleUpdateAdmin={props.handleUpdateAdmin}
+              user={user}
+            />
           ))}
           </div>
           :
@@ -46,21 +45,15 @@ const Requests = (props: RequestsProps): JSX.Element => {
         {authorizedProfs.length ? 
         <div>
           {authorizedProfs.map((p: Profile) => (
-            <>
-              <p>{p.name} is authorized</p>
-              {user?.admin &&
-                <>
-                  <button onClick={() => props.handleUpdateAuthorization(p)}>
-                    unauthorize
-                  </button>
-                  <button onClick={() => props.handleUpdateAdmin(p)}>
-                    {p.User?.admin ? 'Remove Admin' : 'Grant Admin Status'}
-                  </button>
-                </>
-              }
-            </>
+            <RequestCard 
+              key={p.id}
+              profile={p}
+              handleUpdateAuthorization={props.handleUpdateAuthorization}
+              handleUpdateAdmin={props.handleUpdateAdmin}
+              user={user}
+            />
           ))}
-        </div>
+          </div>
           :
           <p>No authorized users</p>
         }
