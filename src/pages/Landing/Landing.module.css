@@ -10,6 +10,32 @@
   margin: 2vh;
 }
 
+.buttonContainer {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+
+.buttonContainer > a {
+  color: #3d74d4;
+  background-color: #ececec;
+  font-size: 24px;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 25px;
+}
+
+.buttonContainer > a:hover {
+  background-color: #e3e3e3;
+}
+
+.buttonContainer > a:active {
+  background-color: #d6d6d6;
+  transform: scale(0.95);
+}
+
 .link {
   color: #3d74d4;
   text-decoration: none;
