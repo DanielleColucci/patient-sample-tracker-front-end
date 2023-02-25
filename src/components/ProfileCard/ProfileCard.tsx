@@ -1,3 +1,5 @@
+import styles from './ProfileCard.module.css'
+
 import { Link } from 'react-router-dom'
 
 // assets
@@ -17,26 +19,26 @@ const ProfileCard = (props: ProfileCardProps): JSX.Element => {
   const { profile, user } = props  
   
   return (
-    <div>
-      <div>
-        <Link to={`/profiles/${profile.id}`}>{profile.name}</Link>
-        {profile.User?.admin && 
-          <p>Admin</p>
-        }
-      </div>
-      <div>
+    <div className={styles.container}>
+      <div className={styles.cardTop}>
+        <div className={styles.topLeft}>
+          <Link to={`/profiles/${profile.id}`}>{profile.name}</Link>
+          <p>{profile.User?.admin ? 'Administrator' : 'Lab Member'}</p>
+        </div>
         <img 
           src={profile.photo ? profile.photo : defaultProfile} 
           alt={`${profile.name}'s avatar`} 
-          style={{width: '80px'}}/>
+        />
+      </div>
+      <div className={styles.cardBottom}>
         {user?.admin && 
-          <div>
+          <div className={styles.buttonContainer}>
             <button onClick={() => props.handleUpdateAuthorization(profile)}>
-                unauthorize
-              </button>
-              <button onClick={() => props.handleUpdateAdmin(profile)}>
-                {profile.User?.admin ? 'Remove Admin' : 'Grant Admin Status'}
-              </button>
+                Unauthorize
+            </button>
+            <button onClick={() => props.handleUpdateAdmin(profile)}>
+              {profile.User?.admin ? 'Remove Admin' : 'Grant Admin Status'}
+            </button>
           </div>
         }
       </div>
