@@ -1,3 +1,5 @@
+import styles from './ProfileDetails.module.css'
+
 import { useParams } from "react-router"
 import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
@@ -39,34 +41,41 @@ const ProfileDetails = (props: ProfileDetailsProps): JSX.Element => {
   }, [id])
   
   return (
-    <main>
-      <Link to='/profiles'>Go back</Link>
-      {profile ? 
-        <div>
-          <section>
-            <h1>{profile.name}</h1>
-            <img 
-              src={profile.photo ? profile.photo : defaultProfile} 
-              alt={`${profile.name}'s avatar`} 
-              style={{width: '120px'}}
-            />
-          </section>
-          <section>
-            <h2>Samples</h2>
-            {profile.samples.length ? 
-              <div>
-                {profile.samples.map(sample => (
-                  <SampleCard key={sample.id} sample={sample}/>
-                ))}
-              </div>
-              :
-              <p>This user has not yet added any samples</p>
-            }
-          </section>
-        </div>
-        :
-        <h3>Loading...</h3>
-      }
+    <main className={styles.main}>
+      <div className={styles.backContainer}>
+        <Link to='/profiles'>
+          <button className={styles.backButton}>
+            Go Back
+          </button>
+        </Link>
+      </div>
+      <div className={styles.mainContent}>
+        {profile ? 
+          <>
+            <section className={styles.headerContent}>
+              <h1 className={styles.name}>{profile.name}</h1>
+              <img 
+                src={profile.photo ? profile.photo : defaultProfile} 
+                alt={`${profile.name}'s avatar`} 
+              />
+            </section>
+            <section className={styles.sampleContent}>
+              <h2>Samples</h2>
+              {profile.samples.length ? 
+                <div className={styles.samplesContainer}>
+                  {profile.samples.map(sample => (
+                    <SampleCard key={sample.id} sample={sample}/>
+                  ))}
+                </div>
+                :
+                <p>This user has not yet added any samples</p>
+              }
+            </section>
+          </>
+          :
+          <h3>Loading...</h3>
+        }
+      </div>
     </main>
   )
 }
