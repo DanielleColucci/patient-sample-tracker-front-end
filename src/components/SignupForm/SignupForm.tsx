@@ -65,7 +65,7 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
       className={styles.container}
     >
       <div className={styles.inputContainer}>
-        <label htmlFor="name" className={styles.label}>Name</label>
+        <label htmlFor="name" className={styles.label}>Name:</label>
         <input
           type="text"
           id="name"
@@ -76,7 +76,7 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="email" className={styles.label}>
-          Email
+          Email:
         </label>
         <input
           type="text"
@@ -88,7 +88,7 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="password" className={styles.label}>
-          Password
+          Password:
         </label>
         <input
           type="password"
@@ -100,7 +100,7 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="confirm" className={styles.label}>
-          Confirm Password
+          Confirm Password:
         </label>
         <input
           type="password"
@@ -112,7 +112,7 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
       </div>
       <div className={styles.inputContainer}>
         <label htmlFor="photo-upload" className={styles.label}>
-          Upload Photo
+          Upload Photo:
         </label>
         <input
           type="file"
@@ -121,15 +121,15 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
           onChange={handleChangePhoto}
         />
       </div>
-      <div className={styles.inputContainer}>
+      <div className={styles.buttonContainer}>
         <button 
           disabled={isFormInvalid() || isSubmitted} 
           className={styles.button}
         >
-          {!isSubmitted ? "Sign Up" : "🚀 Sending..."}
+          {!isSubmitted ? "SIGN UP" : "Sending..."}
         </button>
         <Link to="/">
-          <button>Cancel</button>
+          <button className={styles.button}>CANCEL</button>
         </Link>
       </div>
     </form>
