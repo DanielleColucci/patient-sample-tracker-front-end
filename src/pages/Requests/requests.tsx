@@ -1,3 +1,5 @@
+import styles from './Requests.module.css'
+
 // components 
 import RequestCard from "../../components/RequestCard/RequestCard";
 
@@ -20,12 +22,14 @@ const Requests = (props: RequestsProps): JSX.Element => {
     return p.User?.authorized
   })
 
+  if (!profiles.length) return <h3 className={styles.main}>Loading...</h3>
+
   return (
-    <main>
+    <main className={styles.main}>
       <div>
         <h1>Requests</h1>
         {unauthorizedProfs.length ?
-          <div>
+          <div className={styles.container}>
           {unauthorizedProfs.map((p: Profile) => (
             <RequestCard 
               key={p.id}
@@ -43,7 +47,7 @@ const Requests = (props: RequestsProps): JSX.Element => {
       <div>
         <h1>Lab Members</h1>
         {authorizedProfs.length ? 
-        <div>
+        <div className={styles.container}>
           {authorizedProfs.map((p: Profile) => (
             <RequestCard 
               key={p.id}
