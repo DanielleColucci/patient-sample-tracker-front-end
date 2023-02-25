@@ -1,3 +1,5 @@
+import styles from './SampleDetails.module.css'
+
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -35,41 +37,46 @@ const SampleDetails = (props: SampleDetailsProps): JSX.Element => {
   }, [id])
 
   return (
-    <main>
+    <main className={styles.main}>
+      <Link to='/samples'>
+        <button className={styles.backButton}>Go Back</button>
+      </Link>
+      <div className={styles.mainContent}>
       {sample ? 
-        <section> 
+        <section className={styles.container}> 
           <h1>{sample.sampleNumber}</h1>
-          <div>
-            <div>
+          <div className={styles.detailsContainer}>
+            <div className={styles.detailSection}>
               <div>Owner:</div>
               <div>{sample.Profile?.name}</div>
             </div>
-            <div>
+            <div className={styles.detailSection}>
               <div>MRN:</div>
               <div>{sample.MRN}</div>
             </div>
-            <div>
+            <div className={styles.detailSection}>
               <div>Date:</div>
               <div>{sample.date}</div>
             </div>
-            <div>
+            <div className={styles.detailSection}>
               <div>Cell Line Status:</div>
               <div>{sample.cellLine}</div>
             </div>
-            <div>
+            <div className={styles.detailSection}>
               <div>PDX Model Status:</div>
               <div>{sample.PDXModel}</div>
             </div>
           </div>
           {(user?.admin || sample.Profile?.userId === user?.id) && 
-            <div>
+            <div className={styles.buttonsContainer}>
               <Link to={`/samples/${id}/edit`} state={sample}>
-                Edit
+                <button className={styles.editButton}>Edit</button>
               </Link>
               <button 
+                className={styles.deleteButton}
                 onClick={() => props.handleDeleteSample(sample.id)}
               >
-                Delete
+                DELETE
               </button>
             </div> 
           }
@@ -77,7 +84,7 @@ const SampleDetails = (props: SampleDetailsProps): JSX.Element => {
         :
         <h3>Loading...</h3>
       }
-      <Link to='/samples'>Go Back</Link>
+      </div>
     </main>
   )
 }
