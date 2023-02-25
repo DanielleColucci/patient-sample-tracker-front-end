@@ -48,7 +48,7 @@ const SampleDetails = (props: SampleDetailsProps): JSX.Element => {
           <div className={styles.detailsContainer}>
             <div className={styles.detailSection}>
               <div>Owner:</div>
-              <div>{sample.Profile?.name}</div>
+              <Link to={`/profiles/${sample.Profile?.id}`}>{sample.Profile?.name}</Link>
             </div>
             <div className={styles.detailSection}>
               <div>MRN:</div>

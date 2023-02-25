@@ -53,6 +53,10 @@
   font-weight: bold;
 }
 
+.detailSection > a {
+  color: #3d74d4;
+}
+
 .detailSection > :nth-child(2) {
   font-size: 18px;
   width: 55%;
