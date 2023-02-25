@@ -76,7 +76,7 @@ const SampleDetails = (props: SampleDetailsProps): JSX.Element => {
                 className={styles.deleteButton}
                 onClick={() => props.handleDeleteSample(sample.id)}
               >
-                DELETE
+                Delete
               </button>
             </div> 
           }

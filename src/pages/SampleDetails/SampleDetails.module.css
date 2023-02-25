@@ -89,6 +89,10 @@
   margin: 2vh;
 }
 
+.editButton, .deleteButton {
+  width: 90px;
+}
+
 .deleteButton {
   font-size: 18px;
   padding: 8px 12px;
