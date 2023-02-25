@@ -1,3 +1,5 @@
+import styles from './ProfilesList.module.css'
+
 // components
 import ProfileCard from '../../components/ProfileCard/ProfileCard';
 
@@ -16,21 +18,24 @@ const Profiles = (props: ProfilesProps): JSX.Element => {
   const authorizedProfs = profiles.filter((p: Profile) => {
     return p.User?.authorized
   })
+
   if(!authorizedProfs.length) return <p>No profiles yet</p>
 
   return (
-    <>
+    <main className={styles.main}>
       <h1>Lab Members</h1>
-      {authorizedProfs.map((profile: Profile) =>
-        <ProfileCard 
-          key={profile.id} 
-          profile={profile} 
-          user={props.user}
-          handleUpdateAuthorization={props.handleUpdateAuthorization}
-          handleUpdateAdmin={props.handleUpdateAdmin}
-        />
-      )}
-    </>
+      <div className={styles.container}>
+        {authorizedProfs.map((profile: Profile) =>
+          <ProfileCard 
+            key={profile.id} 
+            profile={profile} 
+            user={props.user}
+            handleUpdateAuthorization={props.handleUpdateAuthorization}
+            handleUpdateAdmin={props.handleUpdateAdmin}
+          />
+        )}
+      </div>
+    </main>
   )
 }
 
