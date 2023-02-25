@@ -18,33 +18,45 @@ const Requests = (props: RequestsProps): JSX.Element => {
 
   return (
     <main>
-      <h1>Requests</h1>
-      {unauthorizedProfs.map((p: Profile) => (
-        <>
-          <p>{p.name} is unauthorized</p>
-          {user?.admin && 
-            <button onClick={() => props.handleUpdateAuthorization(p)}>
-              authorize
-            </button>
-          }
-        </>
-      ))}
-      <h1>Lab Members</h1>
-      {authorizedProfs.map((p: Profile) => (
-        <>
-          <p>{p.name} is authorized</p>
-          {user?.admin &&
+      <div>
+        <h1>Requests</h1>
+        {unauthorizedProfs.length ?
+          unauthorizedProfs.map((p: Profile) => (
             <>
-              <button onClick={() => props.handleUpdateAuthorization(p)}>
-                unauthorize
-              </button>
-              <button onClick={() => props.handleUpdateAdmin(p)}>
-                {p.User?.admin ? 'Remove Admin' : 'Grant Admin Status'}
-              </button>
+              <p>{p.name} is unauthorized</p>
+              {user?.admin && 
+                <button onClick={() => props.handleUpdateAuthorization(p)}>
+                  authorize
+                </button>
+              }
             </>
-          }
-        </>
-      ))}
+          ))
+          :
+          <p>No pending requests</p>
+        }
+      </div>
+      <div>
+        <h1>Lab Members</h1>
+        {authorizedProfs.length ? 
+          authorizedProfs.map((p: Profile) => (
+            <div>
+              <p>{p.name} is authorized</p>
+              {user?.admin &&
+                <>
+                  <button onClick={() => props.handleUpdateAuthorization(p)}>
+                    unauthorize
+                  </button>
+                  <button onClick={() => props.handleUpdateAdmin(p)}>
+                    {p.User?.admin ? 'Remove Admin' : 'Grant Admin Status'}
+                  </button>
+                </>
+              }
+            </div>
+          ))
+          :
+          <p>No authorized users</p>
+        }
+      </div>
     </main>
   )
 }
