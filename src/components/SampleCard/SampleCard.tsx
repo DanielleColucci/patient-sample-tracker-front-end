@@ -1,3 +1,5 @@
+import styles from './SampleCard.module.css'
+
 import { Link } from "react-router-dom";
 
 // types
@@ -11,7 +13,7 @@ const SampleCard = (props: SampleCardProps): JSX.Element => {
   const { sample } = props
 
   return (
-    <div>
+    <div className={styles.container}>
       <h2>{sample.sampleNumber}</h2>
       <h4>{sample.date}</h4>
       <h4>{sample.Profile?.name}</h4>
