@@ -55,6 +55,11 @@
 
 .detailSection > a {
   color: #3d74d4;
+  text-decoration: none;
+}
+
+.detailSection > a:hover {
+  text-decoration: underline;
 }
 
 .detailSection > :nth-child(2) {
