@@ -14,12 +14,16 @@ const SampleCard = (props: SampleCardProps): JSX.Element => {
 
   return (
     <div className={styles.container}>
-      <h2>{sample.sampleNumber}</h2>
-      <h4>{sample.date}</h4>
-      <h4>{sample.Profile?.name}</h4>
-      <Link to={`/samples/${sample.id}`}>
-        Details
-      </Link>
+      <h2 className={styles.number}>{sample.sampleNumber}</h2>
+      <h4 className={styles.date}>{sample.date}</h4>
+      <div className={styles.cardFooter}>
+        <h4 className={styles.name}>{sample.Profile?.name}</h4>
+        <Link to={`/samples/${sample.id}`}>
+          <button className={styles.button}>
+            Details
+          </button>
+        </Link>
+      </div>
     </div>
   )
 }
