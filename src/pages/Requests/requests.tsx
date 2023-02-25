@@ -1,3 +1,7 @@
+// components 
+import RequestCard from "../../components/RequestCard/RequestCard";
+
+// types
 import { Profile, User } from "../../types/models"
 
 interface RequestsProps {
@@ -21,7 +25,8 @@ const Requests = (props: RequestsProps): JSX.Element => {
       <div>
         <h1>Requests</h1>
         {unauthorizedProfs.length ?
-          unauthorizedProfs.map((p: Profile) => (
+          <div>
+          {unauthorizedProfs.map((p: Profile) => (
             <>
               <p>{p.name} is unauthorized</p>
               {user?.admin && 
@@ -30,7 +35,8 @@ const Requests = (props: RequestsProps): JSX.Element => {
                 </button>
               }
             </>
-          ))
+          ))}
+          </div>
           :
           <p>No pending requests</p>
         }
@@ -38,8 +44,9 @@ const Requests = (props: RequestsProps): JSX.Element => {
       <div>
         <h1>Lab Members</h1>
         {authorizedProfs.length ? 
-          authorizedProfs.map((p: Profile) => (
-            <div>
+        <div>
+          {authorizedProfs.map((p: Profile) => (
+            <>
               <p>{p.name} is authorized</p>
               {user?.admin &&
                 <>
@@ -51,8 +58,9 @@ const Requests = (props: RequestsProps): JSX.Element => {
                   </button>
                 </>
               }
-            </div>
-          ))
+            </>
+          ))}
+        </div>
           :
           <p>No authorized users</p>
         }
