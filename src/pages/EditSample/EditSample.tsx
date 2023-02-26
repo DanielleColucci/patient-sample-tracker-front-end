@@ -16,7 +16,7 @@ const EditSample = (props: EditSampleProps): JSX.Element => {
   const { state } = useLocation()
   const [form, setForm] = useState<SampleFormData>(state)
   
-  const handleChange = (evt: React.FormEvent) => {
+  const handleChange = (evt: React.FormEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({...form, [evt.currentTarget.name]: evt.currentTarget.value})
   }
 
