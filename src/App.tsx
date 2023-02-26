@@ -47,7 +47,7 @@ function App(): JSX.Element {
         console.log(error)
       }
     }
-    if (user) fetchProfiles()
+    if (user?.authorized) fetchProfiles()
   }, [user])
 
   useEffect((): void => {
@@ -59,7 +59,7 @@ function App(): JSX.Element {
         console.log(error)
       }
     }
-    if (user) fetchAllSamples()
+    if (user?.authorized) fetchAllSamples()
   }, [user])
 
   const handleLogout = (): void => {
