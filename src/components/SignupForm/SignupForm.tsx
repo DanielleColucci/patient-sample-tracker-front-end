@@ -44,7 +44,7 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
       setIsSubmitted(true)
       await authService.signup(formData, photoData)
       handleAuthEvt()
-      navigate('/samples')
+      navigate('/')
     } catch (err) {
       console.log(err)
       handleErrMsg(err, updateMessage)
