@@ -26,9 +26,13 @@ const NavBar = (props: NavBarProps): JSX.Element => {
             <Link to='/'>
               <img className={styles.icon} src={testTube} alt="test tube icon" />
             </Link>
-            <NavLink to="/samples">Samples</NavLink>
-            <NavLink to="/samples/new">Add Sample</NavLink>
-            <NavLink to="/profiles">Lab Members</NavLink>
+            {user.authorized &&
+              <>
+                <NavLink to="/samples">Samples</NavLink>
+                <NavLink to="/samples/new">Add Sample</NavLink>
+                <NavLink to="/profiles">Lab Members</NavLink>
+              </>
+            }
           </div>
           <div className={styles.navRight}>
             {user.admin && <NavLink to="/requests">Requests</NavLink>}

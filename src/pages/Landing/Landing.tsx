@@ -17,11 +17,14 @@ const Landing = (props: LandingProps): JSX.Element => {
     <main className={styles.container}>
       <h1 className={styles.welcome}>Welcome</h1>
       {user ?
-        <div className={styles.buttonContainer}>
-          <Link to='/samples'>View Samples</Link>
-          <Link to='/samples/new'>Add A Sample</Link>
-          <Link to='/profiles'>View Lab Members</Link>
-        </div>
+        user.authorized ? 
+          <div className={styles.buttonContainer}>
+            <Link to='/samples'>View Samples</Link>
+            <Link to='/samples/new'>Add A Sample</Link>
+            <Link to='/profiles'>View Lab Members</Link>
+          </div>
+          : 
+          <h2>You need authorization access to continue.</h2>
         :
         <>
           <h2>Please <a className={styles.link} href="/login">log in</a> to continue.</h2>
