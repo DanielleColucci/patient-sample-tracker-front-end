@@ -8,7 +8,7 @@ interface NewSampleProps {
 }
 
 const NewSample = (props: NewSampleProps): JSX.Element => {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<SampleFormData>({
     MRN: undefined,
     sampleNumber: '',
     date: '',
@@ -16,7 +16,7 @@ const NewSample = (props: NewSampleProps): JSX.Element => {
     PDXModel: 'NA',
   })
 
-  const handleChange = (evt: React.FormEvent) => {
+  const handleChange = (evt: React.FormEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({...form, [evt.currentTarget.name]: evt.currentTarget.value})
   }
 
