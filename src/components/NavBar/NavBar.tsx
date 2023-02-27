@@ -6,6 +6,7 @@ import styles from './NavBar.module.css'
 
 // npm modules
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 
 // components 
 import NavLinksList from './NavLinksList'
@@ -18,12 +19,14 @@ interface NavBarProps {
   user: User | null;
   isOpen: Boolean;
   handleLogout: () => void;
-  handleOpen: () => void;
+  handlePageChange: () => void;
 }
 
 const NavBar = (props: NavBarProps): JSX.Element => {
   const { user, handleLogout, isOpen } = props
-  props.handleOpen()
+  useEffect(() => {
+    props.handlePageChange()
+  }, [])
 
   return (
     <div className={styles.navContainer}>

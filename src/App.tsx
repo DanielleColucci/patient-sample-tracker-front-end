@@ -111,6 +111,10 @@ function App(): JSX.Element {
     setIsOpen(!isOpen)
   }
 
+  const handlePageChange = (): void => {
+    setIsOpen(false)
+  }
+
   return (
     <>
       {width < 768 ? 
@@ -127,7 +131,7 @@ function App(): JSX.Element {
           user={user}
           isOpen={isOpen}
           handleLogout={handleLogout}
-          handleOpen={setIsOpen}
+          handlePageChange={handlePageChange}
         />
       }
       <Routes>
