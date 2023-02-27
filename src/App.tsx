@@ -37,6 +37,12 @@ function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
   const [profiles, setProfiles] = useState<Profile[]>([])
   const [samples, setSamples] = useState<Sample[]>([])
+  const [isopen, setIsOpen] = useState<Boolean>(false)
+  const [width, setWidth] = useState<number>(window.innerWidth)
+
+  useEffect((): void => {
+    window.addEventListener('resize', () => setWidth(window.innerWidth))
+  })
 
   useEffect((): void => {
     const fetchProfiles = async (): Promise<void> => {
