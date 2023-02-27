@@ -13,7 +13,7 @@ interface NavLinksListProps {
 const NavLinksList = (props: NavLinksListProps): JSX.Element => {
   const { user, isOpen, handleLogout } = props
   return (
-    <nav className={isOpen ? 'open' : ''}>
+    <nav className={isOpen ? styles.openNav : styles.nav}>
       {user ?
         <>
           <div className={styles.navLeft}>

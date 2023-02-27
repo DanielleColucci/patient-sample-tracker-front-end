@@ -27,17 +27,22 @@ const SmallScreenNav = (props: SmallScreenNavProps): JSX.Element=> {
         <img src={testTube} alt="test tube icon" className={styles.icon}/>
       </Link>
       <div>
-        <button onClick={props.handleOpen}>
+        <button 
+          onClick={props.handleOpen}
+          className={styles.dropdownButton}
+        >
           {props.isOpen ? 'x' : '≡'}
         </button>
       </div>
-      {props.isOpen && 
-        <NavLinksList 
-          user={user} 
-          isOpen={isOpen}
-          handleLogout={handleLogout}
-        />
-      }
+      <div className={styles.dropdown}>
+        {props.isOpen && 
+          <NavLinksList 
+            user={user} 
+            isOpen={isOpen}
+            handleLogout={handleLogout}
+          />
+        }
+      </div>
     </div>
   )
 }
