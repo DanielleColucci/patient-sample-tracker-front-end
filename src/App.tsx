@@ -17,6 +17,7 @@ import ProfileDetails from './pages/ProfileDetails/ProfileDetails'
 
 // components
 import NavBar from './components/NavBar/NavBar'
+import SmallScreenNav from './components/NavBar/SmallScreenNav'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
@@ -108,7 +109,14 @@ function App(): JSX.Element {
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
+      {width < 768 ? 
+        <SmallScreenNav />
+        : 
+        <NavBar 
+          user={user}
+          handleLogout={handleLogout}
+        />
+      }
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route
