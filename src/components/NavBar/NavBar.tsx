@@ -23,9 +23,9 @@ const NavBar = (props: NavBarProps): JSX.Element => {
   const { user, handleLogout, isOpen } = props
   
   return (
-    <div>
+    <div className={styles.navContainer}>
       <Link to='/'>
-        <img src={testTube} alt="test tube icon" />
+        <img src={testTube} alt="test tube icon" className={styles.icon}/>
       </Link>
       <NavLinksList user={user} handleLogout={handleLogout} isOpen={isOpen}/>
     </div>
