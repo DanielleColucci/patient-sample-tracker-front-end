@@ -17,6 +17,7 @@ interface SmallScreenNavProps {
 }
 
 const SmallScreenNav = (props: SmallScreenNavProps): JSX.Element=> {
+  const { user, handleLogout, isOpen } = props
   return (
     <div>
       <Link to='/'>
@@ -28,7 +29,13 @@ const SmallScreenNav = (props: SmallScreenNavProps): JSX.Element=> {
         </button>
       </div>
       <div>
-        {props.isOpen && <NavLinksList user={props.user} handleLogout={props.handleLogout}/>}
+        {props.isOpen && 
+          <NavLinksList 
+            user={user} 
+            isOpen={isOpen}
+            handleLogout={handleLogout}
+          />
+        }
       </div>
     </div>
   )

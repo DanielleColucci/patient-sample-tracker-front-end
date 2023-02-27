@@ -123,6 +123,7 @@ function App(): JSX.Element {
         : 
         <NavBar 
           user={user}
+          isOpen={isOpen}
           handleLogout={handleLogout}
         />
       }

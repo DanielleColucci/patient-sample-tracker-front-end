@@ -6,13 +6,14 @@ import { User } from '../../types/models'
 
 interface NavLinksListProps {
   user: User | null;
+  isOpen: Boolean;
   handleLogout: () => void;
 }
 
 const NavLinksList = (props: NavLinksListProps): JSX.Element => {
-  const { user } = props
+  const { user, isOpen, handleLogout } = props
   return (
-    <nav className={styles.nav}>
+    <nav className={isOpen ? 'open' : ''}>
       {user ?
         <>
           <div className={styles.navLeft}>
@@ -26,7 +27,7 @@ const NavLinksList = (props: NavLinksListProps): JSX.Element => {
           </div>
           <div className={styles.navRight}>
             {user.admin && <NavLink to="/requests">Requests</NavLink>}
-            <NavLink to="" onClick={props.handleLogout}>Sign Out</NavLink>
+            <NavLink to="" onClick={handleLogout}>Sign Out</NavLink>
           </div>
         </>
       :
