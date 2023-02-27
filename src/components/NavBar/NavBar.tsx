@@ -14,14 +14,17 @@ import NavLinksList from './NavLinksList'
 import { User } from '../../types/models'
 
 interface NavBarProps {
+  width: number;
   user: User | null;
   isOpen: Boolean;
   handleLogout: () => void;
+  handleOpen: () => void;
 }
 
 const NavBar = (props: NavBarProps): JSX.Element => {
   const { user, handleLogout, isOpen } = props
-  
+  props.handleOpen()
+
   return (
     <div className={styles.navContainer}>
       <Link to='/'>

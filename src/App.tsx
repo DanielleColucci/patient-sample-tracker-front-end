@@ -43,7 +43,7 @@ function App(): JSX.Element {
 
   useEffect((): void => {
     window.addEventListener('resize', () => setWidth(window.innerWidth))
-  })
+  }, [])
 
   useEffect((): void => {
     const fetchProfiles = async (): Promise<void> => {
@@ -115,16 +115,19 @@ function App(): JSX.Element {
     <>
       {width < 768 ? 
         <SmallScreenNav 
+          width={width}
           user={user}
           isOpen={isOpen}
           handleLogout={handleLogout}
           handleOpen={handleOpen}
-        />
+          />
         : 
         <NavBar 
+          width={width}
           user={user}
           isOpen={isOpen}
           handleLogout={handleLogout}
+          handleOpen={setIsOpen}
         />
       }
       <Routes>

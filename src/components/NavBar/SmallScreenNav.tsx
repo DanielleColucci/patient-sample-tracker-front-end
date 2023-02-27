@@ -13,6 +13,7 @@ import testTube from '../../assets/test-tube.png'
 import { User } from "../../types/models"
 
 interface SmallScreenNavProps {
+  width: number;
   user: User | null;
   isOpen: Boolean;
   handleLogout: () => void;
