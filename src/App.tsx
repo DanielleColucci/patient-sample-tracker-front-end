@@ -38,7 +38,7 @@ function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
   const [profiles, setProfiles] = useState<Profile[]>([])
   const [samples, setSamples] = useState<Sample[]>([])
-  const [isopen, setIsOpen] = useState<Boolean>(false)
+  const [isOpen, setIsOpen] = useState<Boolean>(false)
   const [width, setWidth] = useState<number>(window.innerWidth)
 
   useEffect((): void => {
@@ -107,10 +107,19 @@ function App(): JSX.Element {
     navigate('/samples')
   }
 
+  const handleOpen = (): void => {
+    setIsOpen(!isOpen)
+  }
+
   return (
     <>
       {width < 768 ? 
-        <SmallScreenNav />
+        <SmallScreenNav 
+          user={user}
+          isOpen={isOpen}
+          handleLogout={handleLogout}
+          handleOpen={handleOpen}
+        />
         : 
         <NavBar 
           user={user}
