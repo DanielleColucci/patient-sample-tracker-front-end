@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 // components 
-
+import NavLinksList from "./NavLinksList";
 
 // assets
 import testTube from '../../assets/test-tube.png'
@@ -28,7 +28,7 @@ const SmallScreenNav = (props: SmallScreenNavProps): JSX.Element=> {
         </button>
       </div>
       <div>
-        {props.isOpen && <h1>Links list</h1>}
+        {props.isOpen && <NavLinksList user={props.user} handleLogout={props.handleLogout}/>}
       </div>
     </div>
   )
