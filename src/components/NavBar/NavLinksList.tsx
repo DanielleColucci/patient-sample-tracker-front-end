@@ -13,10 +13,10 @@ interface NavLinksListProps {
 const NavLinksList = (props: NavLinksListProps): JSX.Element => {
   const { user, isOpen, handleLogout } = props
   return (
-    <nav className={isOpen ? styles.openNav : styles.nav}>
+    <nav className={isOpen ? styles.dropdownNav : styles.nav}>
       {user ?
         <>
-          <div className={styles.navLeft}>
+          <div className={isOpen ? styles.navTop : styles.navLeft}>
             {user.authorized &&
               <>
                 <NavLink to="/samples">Samples</NavLink>
@@ -25,16 +25,15 @@ const NavLinksList = (props: NavLinksListProps): JSX.Element => {
               </>
             }
           </div>
-          <div className={styles.navRight}>
+          <div className={isOpen ? styles.navBottom : styles.navRight}>
             {user.admin && <NavLink to="/requests">Requests</NavLink>}
             <NavLink to="" onClick={handleLogout}>Sign Out</NavLink>
           </div>
         </>
       :
         <>
-          <div className={styles.navLeft}>
-          </div>
-          <div className={styles.navRight}>
+          <div></div>
+          <div className={isOpen ? styles.navBottom : styles.navRight}>
             <NavLink to="/login">Log In</NavLink>
             <NavLink to="/signup">Sign Up</NavLink>
           </div>

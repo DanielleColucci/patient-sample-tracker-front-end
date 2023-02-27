@@ -26,14 +26,12 @@ const SmallScreenNav = (props: SmallScreenNavProps): JSX.Element=> {
       <Link to='/'>
         <img src={testTube} alt="test tube icon" className={styles.icon}/>
       </Link>
-      <div>
-        <button 
-          onClick={props.handleOpen}
-          className={styles.dropdownButton}
-        >
-          {props.isOpen ? 'x' : '≡'}
-        </button>
-      </div>
+      <button 
+        onClick={props.handleOpen}
+        className={isOpen ? styles.closeButton : styles.dropdownButton}
+      >
+        {props.isOpen ? 'X' : '≡'}
+      </button>
       <div className={styles.dropdown}>
         {props.isOpen && 
           <NavLinksList 
