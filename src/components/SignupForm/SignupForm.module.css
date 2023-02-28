@@ -30,6 +30,37 @@
   padding: 8px 16px;
 }
 
+.uploadContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 76%;
+}
+
+.upload {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.uploadButton {
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: 'Arimo', sans-serif;
+}
+
+.uploadText {
+  color: #8f8f8f;
+  margin: 0;
+  font-family: 'Arimo', sans-serif;
+}
+
+.fileUpload {
+  visibility: hidden;
+  width: 0;
+}
+
 .buttonContainer {
   margin-top: 16px;
   width: 100%;
@@ -39,10 +70,15 @@
 }
 
 .button {
-  width: 100%;
+  font-family: 'Arimo', sans-serif;
   font-size: 16px;
   padding: 12px;
   border-radius: 4px;
+}
+
+.buttonContainer > button, 
+.buttonContainer > a > button {
+  width: 100%;
 }
 
 .button:hover {
@@ -50,7 +86,7 @@
 }
 
 .buttonContainer > button {
-  border: 1px solid #9abfff;
+  border: 1px solid #ddeaff;
   background-color: #3d84ff;
   color: white;
 }
@@ -63,16 +99,22 @@
   background-color: #3779ea;
 }
 
-.buttonContainer > a > button {
+.buttonContainer > a > button, 
+.uploadButton {
   background-color: #f3f3f3;
-  color: #838383;
-  border: 1px solid #b9b9b9;
+  color: #515151;
+  border: 1px solid #aab3c2;
 }
 
 .buttonContainer > a > button:hover {
   background-color: #e1e1e1;
 }
 
-.buttonContainer > a > button:active {
-  background-color: #fbfbfb;
+.buttonContainer > a > button:active,
+.uploadButton:active {
+  background-color: #cecece;
+}
+
+.uploadButton:active {
+  transform: scale(0.98);
 }

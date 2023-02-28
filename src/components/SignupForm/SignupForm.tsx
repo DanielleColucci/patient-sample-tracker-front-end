@@ -1,4 +1,5 @@
 // npm modules
+import React from 'react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -27,6 +28,12 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
   const [photoData, setPhotoData] = useState<PhotoFormData>({
     photo: null
   })
+  const [photoChanged, setPhotoChanged] = useState<boolean>(false)
+  const hiddenFileInput = React.useRef<HTMLInputElement>(null)
+
+  const handleClick = (): void => {
+    hiddenFileInput.current?.click()
+  }
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     updateMessage('')
@@ -34,7 +41,10 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
   }
 
   const handleChangePhoto = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    if (evt.target.files) setPhotoData({ photo: evt.target.files.item(0) })
+    if (evt.target.files) {
+      setPhotoData({ photo: evt.target.files.item(0) })
+      setPhotoChanged(true)
+    }
   }
 
   const handleSubmit = async (evt: React.FormEvent): Promise<void> => {
@@ -114,12 +124,30 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
         <label htmlFor="photo-upload" className={styles.label}>
           Upload Photo:
         </label>
-        <input
-          type="file"
-          id="photo-upload"
-          name="photo"
-          onChange={handleChangePhoto}
-        />
+        <div className={styles.uploadContainer}>
+          <div className={styles.upload}>
+            <button 
+              className={styles.uploadButton}
+              form=""
+              onClick={handleClick}
+            >
+              Choose File
+            </button>
+            {photoChanged && 
+              <p className={styles.uploadText}>
+                Image uploaded
+              </p>
+            }
+          </div>
+          <input
+            type="file"
+            id="photo-upload"
+            name="photo"
+            className={styles.fileUpload}
+            ref={hiddenFileInput}
+            onChange={handleChangePhoto}
+          />
+        </div>
       </div>
       <div className={styles.buttonContainer}>
         <button 
