@@ -81,21 +81,24 @@
   width: 100%;
 }
 
-.button:hover {
-  cursor: pointer;
-}
-
-.buttonContainer > button {
+.enabled {
   border: 1px solid #ddeaff;
   background-color: #3d84ff;
   color: white;
 }
 
-.buttonContainer > button:hover {
-  background-color: #3d84ffd6;
+.disabled {
+  border: 1px solid #ddeaff;
+  background-color: #8cb0edb2;
+  color: white;
 }
 
-.buttonContainer > button:active {
+.enabled:hover {
+  background-color: #3d84ffd6;
+  cursor: pointer;
+}
+
+.enabled:active {
   background-color: #3779ea;
 }
 
@@ -104,6 +107,7 @@
   background-color: #f3f3f3;
   color: #515151;
   border: 1px solid #aab3c2;
+  cursor: pointer;
 }
 
 .buttonContainer > a > button:hover {
