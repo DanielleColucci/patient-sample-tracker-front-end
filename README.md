@@ -6,7 +6,7 @@ This app was inspired by my time working in a lung cancer translational research
 
 This app functions as a tracker for these samples, allowing the user to track the patient MRN number, the sample number, the date of the sample, and the status of the cell line and PDX model. To gain access to the site, the user must sign up, and an administrator must authorize the account. Admins control admin and authorization status of users, and can also edit and delete any sample (authorized users can only edit or delete their own samples). 
 
-The authorization system is meant to mimic a locked environment that only lab members can access, but it should be noted that it does not provide sufficient security, especially in the context of sensitive patient data, and this particular versionn should not be used as such. 
+The authorization system is meant to mimic a locked environment that only lab members can access, but it should be noted that it does not provide sufficient security, especially in the context of sensitive patient data, and this particular version should not be used as such. 
 
 # [Visit the site here](https://patient-sample-tracker.netlify.app/)
 
