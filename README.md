@@ -8,7 +8,7 @@ This app functions as a tracker for these samples, allowing the user to track th
 
 The authorization system is meant to mimic a locked environment that only lab members can access, but it should be noted that it does not provide sufficient security, especially in the context of sensitive patient data, and this particular versionn should not be used as such. 
 
-# [Visit the site here]()
+# [Visit the site here](https://patient-sample-tracker.netlify.app/)
 
 [View back end repo here](https://github.com/DanielleColucci/patient-sample-tracker-back-end)
 
